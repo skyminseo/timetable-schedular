@@ -80,10 +80,16 @@ class TimetableManager:
         right = 2 * i + 2
 
         # Compare based on the 'Activity_Dates_Individual' attribute as datetime objects
-        if left < n and ((datetime.strptime(arr[i].get_items()["Activity_Dates_Individual"], "%d/%m/%Y") < datetime.strptime(arr[left].get_items()["Activity_Dates_Individual"], "%d/%m/%Y")) if not reverse else (datetime.strptime(arr[i].get_items()["Activity_Dates_Individual"], "%d/%m/%Y") > datetime.strptime(arr[left].get_items()["Activity_Dates_Individual"], "%d/%m/%Y"))):
+        if left < n and ((datetime.strptime(arr[i].get_items()["Activity_Dates_Individual"], "%d/%m/%Y") 
+                          < datetime.strptime(arr[left].get_items()["Activity_Dates_Individual"], "%d/%m/%Y")) 
+                         if not reverse else (datetime.strptime(arr[i].get_items()["Activity_Dates_Individual"], "%d/%m/%Y") 
+                                              > datetime.strptime(arr[left].get_items()["Activity_Dates_Individual"], "%d/%m/%Y"))):
             largest = left
 
-        if right < n and ((datetime.strptime(arr[largest].get_items()["Activity_Dates_Individual"], "%d/%m/%Y") < datetime.strptime(arr[right].get_items()["Activity_Dates_Individual"], "%d/%m/%Y")) if not reverse else (datetime.strptime(arr[largest].get_items()["Activity_Dates_Individual"], "%d/%m/%Y") > datetime.strptime(arr[right].get_items()["Activity_Dates_Individual"], "%d/%m/%Y"))):
+        if right < n and ((datetime.strptime(arr[largest].get_items()["Activity_Dates_Individual"], "%d/%m/%Y") 
+                           < datetime.strptime(arr[right].get_items()["Activity_Dates_Individual"], "%d/%m/%Y")) 
+                          if not reverse else (datetime.strptime(arr[largest].get_items()["Activity_Dates_Individual"], "%d/%m/%Y") 
+                                               > datetime.strptime(arr[right].get_items()["Activity_Dates_Individual"], "%d/%m/%Y"))):
             largest = right
 
         if largest != i:
